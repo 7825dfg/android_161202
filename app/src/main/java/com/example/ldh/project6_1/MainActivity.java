@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker timePicker;
     CalendarView calendar;
     TextView textView;
+    int ryear, rmonth, rday;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         timePicker = (TimePicker)findViewById(R.id.timePicker);
         calendar = (CalendarView)findViewById(R.id.calendarView);
         textView = (TextView)findViewById(R.id.textView);
+
+
+        calendar.setVisibility(View.INVISIBLE);
+        timePicker.setVisibility(View.INVISIBLE);
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -63,11 +68,23 @@ public class MainActivity extends AppCompatActivity {
                 Cmeter.setTextColor(Color.RED);
             }
         });
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                ryear = year;
+                rmonth = month;
+                rday = dayOfMonth;
+
+            }
+        });
+
+
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cmeter.stop();
                 Cmeter.setTextColor(Color.BLUE);
+                textView.setText(ryear+"년 "+rmonth+"월 "+rday+"일 "+timePicker.getCurrentHour()+"시 "+timePicker.getCurrentMinute()+"분 예약완료");
             }
         });
     }

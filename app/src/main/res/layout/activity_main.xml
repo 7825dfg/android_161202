@@ -25,7 +25,8 @@
 
     <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogroup">
 
         <RadioButton
             android:text="날짜 설정(캘린더뷰)"

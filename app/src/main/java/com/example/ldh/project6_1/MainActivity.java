@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Cmeter.setBase(SystemClock.elapsedRealtime());
                 Cmeter.start();
-
+                Cmeter.setTextColor(Color.RED);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cmeter.stop();
-
+                Cmeter.setTextColor(Color.BLUE);
             }
         });
     }
